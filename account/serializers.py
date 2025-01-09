@@ -65,6 +65,7 @@ class UserChangePassword(serializers.Serializer):
     old_password = serializers.CharField(max_length=128, write_only=True, required=True)
     new_password1 = serializers.CharField(max_length=128, write_only=True, required=True)
     new_password2 = serializers.CharField(max_length=128, write_only=True, required=True)
+
     def validate_old_password(self, value):
         user = self.context['request'].user
         # breakpoint()
@@ -86,3 +87,4 @@ class UserChangePassword(serializers.Serializer):
         user.set_password(password)
         user.save()
         return user
+    
