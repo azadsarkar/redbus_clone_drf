@@ -17,11 +17,22 @@ from django.contrib import admin
 from django.urls import path, include
 from account import views
 from rest_framework.routers import DefaultRouter
+router = DefaultRouter()
+# router.register('user-list', views.UserList, basename='user_list')
+# from rest_framework_simplejwt.views import (
+#     TokenObtainPairView,
+#     TokenRefreshView,
+# )
 
 urlpatterns = [
+    # path('',include(router.urls)),
     path('admin/', admin.site.urls),
-    # path('test',include(router.urls)),
     path('auth/', include('rest_framework.urls')),
     path('account/', include('account.urls')),
     # path('signup/', views.UserRegistrationAPI.as_view(), name='signup_api')
 ]
+# urlpatterns += [
+#     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+#     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+
+# ]

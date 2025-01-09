@@ -35,6 +35,7 @@ class UserUpdateDeleteAPI(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
 
+
     
 
 class ChangePasswordView(generics.UpdateAPIView):
@@ -42,6 +43,7 @@ class ChangePasswordView(generics.UpdateAPIView):
     serializer_class = UserChangePassword
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
+
     def update(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
